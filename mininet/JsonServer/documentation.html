@@ -1,0 +1,319 @@
+<!--
+documentation.html
+Open Mobile Hub
+
+Documents JsonServer's public API
+
+Created by Gareth Johnson
+Copyright (c) 2014 Beckersweet. All rights reserved.
+-->
+<html>
+
+<head>
+<title>Public API Documentation</title>
+<style>
+body {
+    color: #404040;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding: 1.6em;
+}
+a, a:visited, a:active {
+    color: #782553;
+    text-decoration: none;
+}
+a:hover {
+    color: #444;
+}
+h1 a, h1 a:visited, h1 a:active, h1 a:hover, h2 a, h2 a:visited, h2 a:active,
+h2 a:hover, h3 a, h3 a:visited, h3 a:active, h3 a:hover, h4 a, h4 a:visited,
+h4 a:active, h4 a:hover, h5 a, h5 a:visited, h5 a:active, h5 a:hover, h6 a,
+h6 a:visited, h6 a:active, h6 a:hover {
+    color: #404040;
+}
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+}
+h2 {
+    font-size: 2.2em;
+    margin-bottom: 0.9em;
+}
+h3 {
+    font-size: 1.9em;
+    margin-bottom: 0.8em;
+}
+h4 {
+    font-size: 1.6em;
+    margin-bottom: 0.7em;
+}
+h5 {
+    font-size: 1.3em;
+    margin-bottom: 0.6em;
+}
+h6 {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Public API Documentation</h1>
+
+<p>This page documents "JsonServer.py", which is a local server that gets and gives JSON objects for updating and monitoring both real and virtual hosts on an Open Mobile Hub network. This server is meant to be extended for network communication via protocols such as MQTT.</p>
+
+<p>To use the server, give it JSON commands as outlined below. Unless otherwise noted, commands have the following output:</p>
+
+<h6>Success</h6>
+
+<pre><code>{
+    "to": <a href='#client'>client</a>,
+    "confirmation": <a href='#confirmation'>confirmation</a>
+}
+</code></pre>
+
+<h6>Failure</h6>
+
+<pre><code>{
+    "to": <a href='#client'>client</a>,
+    "error": <a href='#error'>error</a>
+}
+</code></pre>
+
+<h2>Commands</h2>
+
+<ul>
+<li><a href='#addRealHost'>addRealHost</a></li>
+<li><a href='#addVirtualHost'>addVirtualHost</a></li>
+<li><a href='#removeRealHost'>removeRealHost</a></li>
+<li><a href='#removeVirtualHost'>removeVirtualHost</a></li>
+<li><a href='#getRealHosts'>getRealHosts</a></li>
+<li><a href='#getVirtualHosts'>getVirtualHosts</a></li>
+<li><a href='#setRealHostAvailability'>setRealHostAvailability</a></li>
+<li><a href='#setVirtualHostAvailability'>setVirtualHostAvailability</a></li>
+</ul>
+
+<h2>Values</h2>
+
+<ul>
+<li><a href='#client'>client</a></li>
+<li><a href='#name'>name</a></li>
+<li><a href='#ip'>ip</a></li>
+<li><a href='#mac'>mac</a></li>
+<li><a href='#coordinate'>coordinate</a></li>
+<li><a href='#boolean'>boolean</a></li>
+<li><a href='#confirmation'>confirmation</a></li>
+<li><a href='#error'>error</a></li>
+</ul>
+
+<h2>Details</h2>
+
+<h3>Commands</h3>
+
+<h4><a id='addRealHost'>addRealHost</a></h4>
+
+<p>Adds a device, such as an Android device, to the server's list of real hosts</p>
+
+<h5>Input</h5>
+
+<pre><code>{
+    "from": <a href='#client'>client</a>,
+    "command": "addRealHost",
+    "name": <a href='#name'>name</a>,
+    "ip": <a href='#ip'>ip</a>,
+    "mac": <a href='#mac'>mac</a>,
+    "latitude": <a href='#coordinate'>coordinate</a>,
+    "longitude": <a href='#coordinate'>coordinate</a>,
+    "available": <a href='#boolean'>boolean</a>
+}
+</code></pre>
+
+<h4><a id='addVirtualHost'>addVirtualHost</a></h4>
+
+<p>Adds a virtual host to the server's list of virtual hosts</p>
+
+<h5>Input</h5>
+
+<pre><code> {
+    "from": <a href='#client'>client</a>,
+    "command": "addVirtualHost",
+    "name": <a href='#name'>name</a>,
+    "ip": <a href='#ip'>ip</a>,
+    "mac": <a href='#mac'>mac</a>,
+    "available": <a href='#boolean'>boolean</a>
+ }
+</code></pre>
+
+<h4><a id='removeRealHost'>removeRealHost</a></h4>
+
+<p>Removes a device, such as an Android device, from the server's list of real hosts</p>
+
+<h5>Input</h5>
+
+<pre><code>{
+    "from": <a href='#client'>client</a>,
+    "command": "removeRealHost",
+    "name": <a href='#name'>name</a>
+}
+</code></pre>
+
+<h4><a id='removeVirtualHost'>removeVirtualHost</a></h4>
+
+<p>Removes a virtual host from the server's list of virtual hosts</p>
+
+<h5>Input</h5>
+ 
+<pre><code> {
+    "from": <a href='#client'>client</a>,
+    "command": "removeVirtualHost",
+    "name": <a href='#name'>name</a>
+ }
+</code></pre>
+
+<h3><a id='getRealHosts'>getRealHosts</a></h3>
+
+<p>Gets an array of the real hosts in the server's list of real hosts</p>
+
+<h4>Input</h4>
+
+<pre><code>{
+    "from": <a href='#client'>client</a>,
+    "command": "getRealHosts"
+}
+</code></pre>
+
+<h4>Output</h4>
+
+<h6>Success</h6>
+
+<pre><code>{
+    "to": <a href='#client'>client</a>,
+    "realHosts":
+        [
+            {
+                "name": name,
+                "ip": <a href='#ip'>ip</a>,
+                "mac": <a href='#mac'>mac</a>,
+                "latitude": <a href='#coordinate'>coordinate</a>,
+                "longitude": <a href='#coordinate'>coordinate</a>,
+                "available": <a href='#boolean'>boolean</a>
+            }
+        ]
+}
+</code></pre>
+
+<h3><a id='getVirtualHosts'>getVirtualHosts</a></h3>
+
+<p>Gets an array of the real hosts in the server's list of virtual hosts</p>
+
+<h4>Input</h4>
+
+<pre><code>{
+    "from": <a href='#client'>client</a>,
+    "command": "getVirtualHosts"
+}
+</code></pre>
+
+<h6>Success</h6>
+
+<pre><code>{
+    "to": <a href='#client'>client</a>,
+    "virtualHosts":
+        [
+            {
+                "name": name,
+                "ip": <a href='#ip'>ip</a>,
+                "mac": <a href='#mac'>mac</a>,
+                "available": <a href='#boolean'>boolean</a>
+            }
+        ]
+}
+</code></pre>
+
+<h4><a id='setRealHostAvailability'>setRealHostAvailability</a></h4>
+
+<p>Sets the availability status of a real host</p>
+
+<h5>Input</h5>
+
+<pre><code>{
+    "from": <a href='#client'>client</a>,
+    "command": "setRealHostAvailability",
+    "name": <a href='#name'>name</a>,
+    "available": <a href='#boolean'>boolean</a>
+}
+</code></pre>
+
+<h4><a id='setVirtualHostAvailability'>setVirtualHostAvailability</a></h4>
+
+<p>Sets the availability status of a virtual host</p>
+
+<h5>Input</h5>
+
+<pre><code>{
+    "from": <a href='#client'>client</a>,
+    "command": "setVirtualHostAvailability",
+    "name": <a href='#name'>name</a>,
+    "available": <a href='#boolean'>boolean</a>
+}
+</code></pre>
+
+<h3>Attributes</h3>
+
+<h4><a id='client'>client</a></h4>
+
+<p>Type: string</p>
+
+<p>Description: A unique identifier for the client that sends the JSON requests and receives the JSON responses</p>
+
+<h4><a id='name'>name</a></h4>
+
+<p>Type: string</p>
+
+<p>Description: A unique identifier for the given host</p>
+
+<h4><a id='ip'>ip</a></h4>
+
+<p>Type: string</p>
+
+<p>Description: A valid IP address of the form 'X.X.X.X' where X is an integer from 0 to 255</p>
+
+<h4><a id='mac'>mac</a></h4>
+
+<p>Type: string</p>
+
+<p>Description: An address for the host on the server's lists. It is meant to be shared between real hosts and their virtual counterparts. It is recommended that it is of the form "XX-XX-XX-XX-XX-XX" where X single character -- either an integer from 0 to 9 or a lowercase letter from 'a' to 'f'.</p>
+
+<h4><a id='coordinate'>coordinate</a></h4>
+
+<p>Type: number</p>
+<p>Description: A latitude/longitude style GPS coordinate for the given host</p>
+
+<h4><a id='boolean'>boolean</a></h4>
+
+<p>Type: boolean</p>
+<p>Description: Simply either "true" or "false"</p>
+
+<h4><a id='confirmation'>confirmation</a></h4>
+
+<p>Type: string</p>
+
+<p>Description: A message that confirms success</p>
+
+<h4><a id='error'>error</a></h4>
+
+<p>Type: string</p>
+
+<p>Description: The name of the reason for failure</p>
+
+<h4><a id='data'>data</a></h4>
+
+<p>Type: string</p>
+
+<p>Description: A string containing the full request that resulted in failure</p>
+
+</body>
+
+</html>

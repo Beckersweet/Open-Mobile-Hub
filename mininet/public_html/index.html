@@ -1,0 +1,112 @@
+<!--
+index.html
+Open Mobile Hub
+
+Web app for MQTT communication that monitors host connections
+
+Created by Gareth Johnson
+Copyright (c) 2014 Beckersweet. All rights reserved.
+-->
+<html>
+<head>
+<title>Web Monitor</title>
+<script src='jquery.min.js'></script>
+<script src='jquery.watermark.min.js'></script>
+<script>
+$(document).ready(function() {
+	var BROKER = '192.168.56.101';
+	var PORT = '8080';
+	// var TOPIC = 'OpenMobileHub';
+
+	var WEBSOCKET_HANDLER = 'OpMub';
+
+	// $('#broker').watermark('Broker URL (default: ' + BROKER + ')');
+	// $('#port').watermark('Port (defualt: ' + PORT + ')');
+	// $('#topic').watermark('Topic (default: ' + TOPIC + ')');
+
+	function debug(str) {
+		$('#log').append('<p>' + str + '</p>');
+	};
+
+	if (!('WebSocket' in window)) {
+		debug('Error: Web sockets not detected');
+	};
+
+	$('#connect').click(function() {
+		debug('Trying to connect...');
+		websocketHandlerPath = 'ws://' + BROKER + ':' + PORT + '/';
+		var socket = new WebSocket(websocketHandlerPath + WEBSOCKET_HANDLER);
+		socket.onopen = function() {
+			debug('Socket opened');
+			socket.send('{"command":"getRealHosts"}');
+		};
+		socket.onmessage = function (event) {
+			debug(event.data);
+			var logWindow = $('#log-window');
+			logWindow.scrollTop(logWindow[0].scrollHeight);
+		};
+		socket.onclose = function() {
+			debug('Socket closed');
+		};
+	});
+});
+</script>
+<style>
+body {
+	font-size: 14px;
+}
+form {
+	padding: 10px;
+}
+input {
+	border-color: #bbb;
+	border-radius: 5px;
+	border-style: solid;
+	border-width: 2px;
+	color: #444;
+	display: block;
+	font-size: 1em;
+	margin-bottom: 10px;
+	padding: 5px;
+	width: 100%;
+}
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+	display: none; /* Turn off up/down arrows for port number input. */
+}
+input[type=button] {
+	background-color: #bbb;
+}
+#log-window {
+	background-color: #000;
+	height: 400px;
+	overflow: scroll;
+	width: 100%;
+}
+
+#log {
+	margin: 10px;
+}
+#log p {
+	color: #fff;
+	font-family: monospace;
+	font-size: 0.9em;	
+	margin: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- <input id='broker' type='url'/> -->
+
+<!-- <input id='port' type='number'/> -->
+
+<!-- <input id='topic' type='text'/> -->
+
+<input id='connect' type='button' value='Connect and Get Hosts'/>
+
+<div id='log-window'>
+  <div id='log'></div>
+</div>
+
+</body>
+</html>

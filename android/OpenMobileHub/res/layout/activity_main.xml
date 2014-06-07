@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity"
+    android:id="@+id/root_layout" >
+
+    <EditText
+        android:inputType="textUri"
+        android:id="@+id/broker_url"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/broker_url" />
+
+    <EditText
+        android:id="@+id/port"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/broker_url"
+        android:layout_below="@+id/broker_url"
+        android:ems="10"
+        android:hint="@string/port"
+        android:inputType="number" />
+
+    <ScrollView
+        android:id="@+id/log_window"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button_map"
+        android:layout_alignLeft="@+id/button_get"
+        android:layout_alignRight="@+id/button_get"
+        android:layout_below="@+id/button_work"
+        android:layout_margin="5dp"
+        android:background="@color/log_background"
+        android:padding="5dp" >
+        
+        <TextView
+            android:id="@+id/log_text"
+            android:layout_width="fill_parent"
+            android:layout_height="98dp"
+            android:textColor="@color/log_text"
+            android:typeface="monospace" />
+
+        <!-- <LinearLayout
+            android:id="@+id/ui_log"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="bottom"
+        	android:layout_margin="5dip" >
+        </LinearLayout> -->
+        
+    </ScrollView>
+
+    <Button
+        android:id="@+id/button_add"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/port"
+        android:onClick="addHost"
+        android:text="@string/button_add" />
+
+     <Button
+        android:id="@+id/button_get"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button_add"
+        android:layout_below="@+id/button_add"
+        android:onClick="getHosts"
+        android:text="@string/button_get" />
+
+     <Button
+         android:id="@+id/button_work"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/button_get"
+         android:layout_below="@+id/button_get"
+         android:onClick="startWorker"
+         android:text="@string/button_work" />
+
+     <Button
+         android:id="@+id/button_map"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/button_get"
+         android:layout_alignParentBottom="true"
+         android:onClick="openMap"
+         android:text="@string/button_map" />
+
+</RelativeLayout>

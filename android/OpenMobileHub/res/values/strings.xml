@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Open Mobile Hub</string>
+    <string name="loading">Open Mobile Hub running…</string>
+    
+    <string name="broker_url">Broker (e.g. 192.168.1.101)</string>
+    <string name="port">Port (default: 9998)</string>
+    <string name="button_add">Add Host</string>
+    <string name="button_get">Get Hosts</string>
+    <string name="button_map">Open Map</string>
+    <string name="button_work">Start Worker</string>
+    
+    <string name="map_name">Host Map</string>
+    
+    <string name="host_detail_name">Host Details</string>
+    <string name="host_detail_title">Host Details</string>
+    <string name="host_detail_name_name">Name: </string>
+    <string name="host_detail_default_name">Unknown</string>
+    <string name="host_detail_ip_name">IP address: </string>
+    <string name="host_detail_default_ip">Unknown</string>
+    <string name="host_detail_mac_name">MAC address: </string>
+    <string name="host_detail_default_mac">Unknown</string>
+    <string name="host_detail_latitude_name">Latitude: </string>
+    <string name="host_detail_default_latitude">Unknown</string>
+    <string name="host_detail_longitude_name">Longitude: </string>
+    <string name="host_detail_default_longitude">Unknown</string>
+    <string name="host_detail_status_name">Status: </string>
+    <string name="host_detail_default_status">Unknown</string>
+    
+    <color name="log_background">#000000</color>
+    <color name="log_text">#FFFFFF</color>
+</resources>
