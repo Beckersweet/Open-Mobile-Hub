@@ -1,9 +1,9 @@
 Open Mobile Hub
 ===============
 
-Open Mobile Hub is a mobile supercomputing hub where individuals, experts, and big data meet to solve real world problems.
+We are building a distributed supercomputer made of smartphones, tablets and virtual machines, turning mobile devices into decentralized data analytics platforms for predictive sciences and real-world apps deployement.  
 
-We are building a distributed supercomputer made of smartphones and tablets, turning mobile devices into a peer-to-peer research platform for science hobbyists.
+Open Mobile Hub aims to become a network of mobile supercomputing hubs where individuals, experts and big data meet to have fun and solve real-world problems. 
 
 The current Android-based prototype (version 0.0.1) for the Open Mobile Hub platform is a virtual machine (VM) image of the Ubuntu operating system running Mininet. It allows Android devices to connect to the VM root node that interfaces with the virtual network and its POX controller. The root node also has a port 8080 that connects to a web interface to monitor the connected devices.
 
