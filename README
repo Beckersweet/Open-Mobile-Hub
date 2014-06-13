@@ -11,6 +11,8 @@ Our initial benchmark (sum calculation) is deployed in parallel over the distrib
 
 In the long term, we also want Open Mobile Hub to include traditional supercomputing resources as additional peer resources.
 
-Through the Open Mobile Hub interface, mobile devices aim to become bridges between the sensor/wearable world and the (academic) cloud in order to limit data movement. We want to build a network of computing hubs in a flexible, heterogeneous, power-aware, and failure-aware (i.e. responsive) environment.
+As well, through the Open Mobile Hub interface, mobile devices aim to become bridges between the sensor/wearable world and the (academic) cloud in order to limit data movement. 
+
+Our final goal is to build a network of computing hubs in a flexible, heterogeneous, power-aware, and failure-aware (i.e. responsive) environment.
 
 Please register at http://unbouncepages.com/openmobilehub to download the Quick Start Guide. We will also add you on JIRA for issue tracking.
