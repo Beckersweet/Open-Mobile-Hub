@@ -11,6 +11,6 @@ Our initial benchmark (sum calculation) is deployed in parallel over the distrib
 
 In the long term, we also want Open Mobile Hub to include traditional supercomputing resources as additional peer resources.
 
-Our final goal is to allow citizen scientists and academic researchers to collaborate via mobile devices to implement projects like Folding@home in a flexible, heterogeneous, power-aware, and failure-aware (i.e. responsive) computing and collaborative environment.
+Through the Open Mobile Hub interface, mobile devices aim to become bridges between the sensor/wearable work and the cloud in order to limit data movement. We want to build a network of computing hubs in a flexible, heterogeneous, power-aware, and failure-aware (i.e. responsive) environment.
 
 Please register at http://unbouncepages.com/openmobilehub to download the Quick Start Guide. We will also add you on JIRA for issue tracking.
