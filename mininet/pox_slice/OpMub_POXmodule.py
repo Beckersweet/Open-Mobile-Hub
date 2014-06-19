@@ -61,8 +61,9 @@ quantum = {}
 # (1,1) FLOOD packets to all SWs
 rules = [(1,1)]
 
-#User Rules
+# User Rules
 # Use REST API to load the rules
+# Warning : POX does not support REST
 NBS=3
 NBH=3
 moduloSWT=1
@@ -71,7 +72,7 @@ taskparallel = True
 juridiction = 27 # country code
 urules =[(NBS,NBH,moduloSWT,moduloHST,taskparallel,juridiction)]
 
-# POX does not support REST
+# Warning : POX does not support REST
 # if REST : Send a REST API request  
 # url = "http://%s:6633/opmub/mobile/conections/rules/json" % controllerIP
 # rules = json.load(urllib2.urlopen(url))
@@ -421,7 +422,7 @@ class SwitchAlloc (EventMixin): # Should be renamed "SwitchEvents" or "SwitchAll
             Uses a REST interface to query SWITCH addresses that should be in the same computing hub
             '''    
             
-            # POX does not support REST
+            # Warning : POX does not support REST
             #if REST : Send a REST API request
             # url = "http://%s:6633/opmub/mobile/connections/json" % controllerIP
             # switches = json.load(urllib2.urlopen(url)) 
@@ -459,7 +460,7 @@ class SwitchAlloc (EventMixin): # Should be renamed "SwitchEvents" or "SwitchAll
     # Crowdsource data
     def Crowdsource(hub,data):
             '''
-            Uses a REST interface to crowdsource data from a given hub
+            Uses a (REST) interface to crowdsource data from a given hub
             '''
             #for each mobile in hub:
                 #dst,src,dstPort,srcPort = data.split(',')
@@ -469,7 +470,9 @@ class SwitchAlloc (EventMixin): # Should be renamed "SwitchEvents" or "SwitchAll
                 #get back result on dst
     
     def initPeerConnection(self,maxpeers,serverport,myid,serverhost): 
-            # Routines from btpeer.py
+            '''
+            Routines from btpeer.py
+            '''
 
             # Init peer connection
             peerConn = btpeer.__init__(maxpeers,serverport)
@@ -623,7 +626,7 @@ class SwitchAlloc (EventMixin): # Should be renamed "SwitchEvents" or "SwitchAll
            log.debug("Rule with value:%s installed on Switch with Port %i and Mac: %s",value,inport, dpid_to_mac(dpid))
 
     def DeleteRule(self,dpid,inport):
-        # POX does not support REST
+        # Warning : POX does not support REST
         #if REST
         #try REST del command
         #for i in len(rules)
