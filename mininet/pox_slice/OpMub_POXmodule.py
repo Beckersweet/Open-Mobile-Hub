@@ -420,6 +420,8 @@ class SwitchAlloc (EventMixin): # Should be renamed "SwitchEvents" or "SwitchAll
             '''
             Uses a REST interface to query SWITCH addresses that should be in the same computing hub
             '''    
+            
+            # POX does not support REST
             #if REST : Send a REST API request
             # url = "http://%s:6633/opmub/mobile/connections/json" % controllerIP
             # switches = json.load(urllib2.urlopen(url)) 
@@ -467,8 +469,9 @@ class SwitchAlloc (EventMixin): # Should be renamed "SwitchEvents" or "SwitchAll
                 #get back result on dst
     
     def initPeerConnection(self,maxpeers,serverport,myid,serverhost): 
+            # Routines from btpeer.py
 
-            #Init peer connection
+            # Init peer connection
             peerConn = btpeer.__init__(maxpeers,serverport)
 
             if peerConn != None:
@@ -620,6 +623,7 @@ class SwitchAlloc (EventMixin): # Should be renamed "SwitchEvents" or "SwitchAll
            log.debug("Rule with value:%s installed on Switch with Port %i and Mac: %s",value,inport, dpid_to_mac(dpid))
 
     def DeleteRule(self,dpid,inport):
+        # POX does not support REST
         #if REST
         #try REST del command
         #for i in len(rules)
@@ -649,10 +653,13 @@ class SwitchAlloc (EventMixin): # Should be renamed "SwitchEvents" or "SwitchAll
 
 class OpMubApp (EventMixin):
      '''
-     Initial REST service : Allocation of Mobile resources for a given user
+     Initial (REST) service : Allocation of Mobile resources for a given user
      The FINAL service architecture should be as follows :
      OpMubApp <-> NB API <-> Orchestrator <-> CTRs/SWs <-> Mobile Resources
      '''
+
+     # Warning : POX does not support REST
+
      def __init__(self,transparent, fakeways = [],arp_for_unknowns = False):
          self.listenTo(core.openflow)
          self.listenTo(core.openflow_discovery) 
