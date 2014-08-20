@@ -1,7 +1,6 @@
-Open Mobile Hub
-===============
+# Open Mobile Hub
 
-We are building a distributed supercomputer made of smartphones, tablets and virtual machines, turning mobile devices into decentralized data analytics platforms for predictive sciences and real-world apps deployement.  
+We are building a distributed supercomputer made of smartphones, tablets and virtual machines, turning mobile devices into decentralized data analytics platforms for predictive sciences and real-world apps deployement.
 
 Open Mobile Hub aims to become a network of mobile supercomputing hubs where individuals, experts and big data meet to have fun and solve real-world problems. 
 
